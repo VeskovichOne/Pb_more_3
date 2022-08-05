@@ -1,0 +1,35 @@
+using System;
+
+namespace PbMoreExercises
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double volume = double.Parse(Console.ReadLine());
+            double firstPipeForHour = double.Parse(Console.ReadLine());
+            double secondPipeForHour = double.Parse(Console.ReadLine());
+            double hours = double.Parse(Console.ReadLine());
+
+            double firstPipe = hours * firstPipeForHour;
+            double secondPipe = hours * secondPipeForHour;
+            double sumPipe = firstPipe + secondPipe;
+            double sumVolume = sumPipe / volume * 100;
+            double firstPipeVolume = firstPipe / sumPipe * 100;
+            
+            double secondPipeVolume = secondPipe / sumPipe * 100;
+            double overflow = firstPipeVolume + secondPipeVolume;
+            if (sumPipe > volume)
+            {
+                overflow  = sumPipe -volume;
+                Console.WriteLine($"For {hours:f2} hours the pool overflows with {overflow:f2} liters.");
+            }
+            else
+            {
+                Console.WriteLine($"The pool is {sumVolume:f2}% full. Pipe 1: {firstPipeVolume:f2}%. Pipe 2: {secondPipeVolume:f2}%.");
+            }
+            
+
+        }
+    }
+}
